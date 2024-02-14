@@ -1,0 +1,185 @@
+@import url('https://fonts.google.com/share?selection.family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: "Poppins",sans-serif;
+
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #2f4f4f;
+}
+.container
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border-top-left-radius: 225px;
+    border-top-right-radius: 225px;
+    box-shadow:25px 25px 75px rgba(0,0,0,0.75),
+    10px 50px 70px rgba(0,0,0,0.25), inset 5px 5px 10px rgba(0,0,0,0.5),
+    inset 5px 5px 20px rgba(255,255,255,0.2), inset -5px -5px 15px rgba(0,0,0,0.75);
+     background: #203838;
+}
+.clock
+{
+    position: relative;
+    display: flex;
+    justify-content: center; /*content comes to centre*/
+    align-items: center;
+    margin-bottom: 30px;
+    width: 450px;
+    height: 450px;
+    background: #274343;
+    border-radius: 50%;
+    box-shadow: 10px 50px 70px rgba(0,0,0,0.25),
+    inset  5px 5px 10px rgba(0,0,0,0.5),
+    inset  5px 5px 20px rgba(0,0,0,0.2),
+    inset -5px -5px 15px rgba(0,0,0,0.75);
+}
+
+.clock::before{
+   content: '';
+    position: absolute;
+    z-index: 100000;
+    width: 8px;
+    height: 8px;
+    border: 3px solid #fff;
+    border-radius: 50%; /*radius makes it circle*/
+    background:274343 ;
+
+}
+
+.clock span{         /*to make nos rotated*/
+    position: absolute;
+    inset: 20px; /*all circles came in centre*/
+    color: #fff;
+    text-align: center;
+    transform: rotate(calc(30deg * var(--i)));
+    /* 360/12=30*/
+}
+
+.clock b{
+    font-size: 2em;
+    opacity: 0.25;
+    font-weight: 500;
+    display: inline-block;
+    transform: rotate(calc(-30deg * var(--i)));
+}
+
+.circle{     /*for the inner black line*/
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: centre;
+    width: 300px;
+    height: 300px;
+    border: 2px solid rgba(0,0,0,0.25);
+    border-radius: 50%;
+
+}
+
+.circle i{
+    position: absolute;
+    width: 6px;
+    height: 50%;
+    background: var(--clr);
+    opacity: 0.75;
+    transform-origin: bottom;
+    
+   
+}
+
+.circle:nth-child(1) i{
+    width: 2px;
+}
+
+.circle:nth-child(2) i{
+    width: 6px;
+}
+
+.circle2{  /*inner circle*/
+    z-index: 9;
+    width: 240px;
+    height: 240px;
+}
+
+.circle3{  /*inner circle*/
+    z-index: 9;
+    width: 180px;
+    height: 180px;
+}
+.circle::before{
+    content: " ";
+    position: absolute;
+    top: -8.5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--clr);
+    box-shadow: 0 0 20px var(--clr),
+    0 0 60px var(--clr)
+}
+#time{
+    display: flex;
+    margin-bottom: 40px;
+    padding: 10px 20px;  /* box for time*/
+    border: 2px solid rgba(0,0,0,0.5); /*border size of box*/
+    border-radius: 40px;  /* make it oval*/
+    box-shadow: 10px 50px 70px rgba(0,0,0,0.25),
+    inset  5px 5px 10px rgba(0,0,0,0.5),
+    inset  5px 5px 20px rgba(0,0,0,0.2),
+    inset -5px -5px 15px rgba(0,0,0,0.75);
+    font-size: 2em;
+    font-weight: 400;
+    
+}
+
+#time div{
+    position: relative;
+    width: 60px; /*gap*/
+    text-align: center;
+    font-weight: 500;
+    color: var(--clr);
+}
+
+#time div:nth-child(1)::after,
+#time div:nth-child(2)::after{
+    content: ":";
+    position: absolute;
+    right:-4px
+
+}
+
+
+#time div:last-child{
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.5em;
+    align-items: center;
+}
+
+#time div:nth-child(2)::after{
+    animation: animate 1s steps(1) infinite;
+
+}
+
+@keyframes animate{
+    0% {
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+}
